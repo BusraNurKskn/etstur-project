@@ -1,6 +1,6 @@
 package com.busra.etsturproject.validation;
 
-import com.busra.etsturproject.entity.Extension;
+import com.busra.etsturproject.enums.Extension;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class StorageValidator {
 
-  public void validate(String extension) {
-    if (!Extension.isContains(extension)) {
-      log.error("Not valid extension");
-      throw new RuntimeException("Not valid extension");
+    public void validate(String extension) {
+        if (!Extension.isContains(extension)) {
+            log.error("Not valid extension");
+            throw new RuntimeException("Not valid extension");
+        }
     }
-  }
 }

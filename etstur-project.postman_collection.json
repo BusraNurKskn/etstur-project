@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "a396c361-7b7b-4af8-837d-402368a342e3",
+		"name": "etstur-project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "upload",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Authorization",
+						"value": "Bearer ",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/BF/Desktop/deneme.docx"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/storage",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"storage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAll",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Authorization",
+						"value": "Bearer ",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/storage",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"storage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-Authorization",
+						"value": "Bearer ",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/storage?name=deneme.docx",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"storage"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "deneme.docx"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getByte",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Authorization",
+						"value": "Bearer ",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/storage/file?name=deneme.docx",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"storage",
+						"file"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "deneme.docx"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"busra\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/security/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"security",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

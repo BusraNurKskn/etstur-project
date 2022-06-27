@@ -1,8 +1,9 @@
 package com.busra.etsturproject.controller;
 
-import com.busra.etsturproject.entity.StorageResponse;
+import com.busra.etsturproject.dto.StorageResponse;
 import com.busra.etsturproject.service.StorageService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,26 +14,29 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StorageController {
 
-  private final StorageService storageService;
+    private final StorageService storageService;
 
-  @PostMapping
-  public StorageResponse upload(@RequestParam("file") MultipartFile file) {
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public StorageResponse upload(@RequestParam("file") MultipartFile file,
+                                  @RequestHeader("X-Authorization") String authorization) {
+        return storageService.upload(file);
+    }
 
-    return storageService.upload(file);
-  }
-  @GetMapping
-  public List<StorageResponse> getAll(){
-    return storageService.getAll();
-  }
+    @GetMapping
+    public List<StorageResponse> getAll(@RequestHeader("X-Authorization") String authorization) {
+        return storageService.getAll();
+    }
 
-  @GetMapping("file")
-  public byte[] getByteFile(@RequestParam("name") String name){
-    return storageService.getByteFile(name);
-  }
+    @GetMapping("file")
+    public byte[] getByteFile(@RequestParam("name") String name,
+                              @RequestHeader("X-Authorization") String authorization) {
+        return storageService.getByteFile(name);
+    }
 
-  @DeleteMapping
-  public void delete(@RequestParam("name") String name){
-    storageService.delete(name);
-  }
+    @DeleteMapping
+    public void delete(@RequestParam("name") String name,
+                       @RequestHeader("X-Authorization") String authorization) {
+        storageService.delete(name);
+    }
 
 }
